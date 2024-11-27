@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ProductsPage from './pages/ProductsPage.tsx'
 import HomePage from './pages/HomePage.tsx'
 import AboutPage from './pages/AboutPage.tsx'
+import ProductDetail from './pages/ProductDetail.tsx'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: '/store',
         element: <ProductsPage/>
+      },
+      {
+        path: '/store/:id',
+        element: <ProductDetail/>
       },
       {
         path: '/about',

@@ -41,7 +41,13 @@
   color: #888;
 } */
 
+$mobile : 450px;
 
+@mixin respond-to($mobile){
+  @media (max-width: $mobile){
+    @content
+  }
+}
 
 * {
   margin: 0;
@@ -51,49 +57,186 @@
 }
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
 
-  .container {
-    background-color: black;
-    color: white;
-    width: 300px;
-    height: 300px;
-    position: relative;
-    border-radius: 10px;
+  header {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 
-    a {
-      cursor: pointer;
-
-      img {
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
-        border: none;
-      }
+    @include respond-to($mobile){
+      padding: 10px;
     }
 
-    .details {
-      padding: 10px;
-      background-color: rgb(199, 199, 199);
-      color: black;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      border-radius: 0 0 10px 10px;
+    nav {
+      display: flex;
+      gap: 10px;
 
-      .add-to-cart {
-        width: 40px;
-        height: 40px;
-        background-color: black;
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        border-radius: 30px;
-        cursor: pointer;
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-right: 20px;
+
+        a {
+          text-decoration: none;
+          cursor: pointer;
+          font-weight: bold;
+          color: rgb(41, 35, 35);
+        }
       }
+
+      .shopping-cart {
+        .add-to-cart {
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
+          font-size: large;
+          font-weight: bold;
+          border-radius: 30px;
+          border: none;
+        }
+      }
+
+      .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        .sign-up {
+          padding: 5px;
+          width: 75px;
+          cursor: pointer;
+          border: none;
+          border-radius: 5px;
+        }
+
+        .sign-in {
+          padding: 5px;
+          width: 75px;
+          cursor: pointer;
+          border: none;
+          border-radius: 5px;
+          background-color: transparent;
+        }
+
+        .sign-out {
+          padding: 5px;
+          width: 75px;
+          cursor: pointer;
+          border: none;
+          border-radius: 5px;
+          background-color: rgb(199, 199, 199);
+        }
+
+        .profile-icon {
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
+          font-size: large;
+          font-weight: bold;
+          border-radius: 30px;
+          border: none;
+          background-color: rgb(199, 199, 199);
+        }
+      }
+    }
+  }
+
+  .products {
+    padding: 20px 80px;
+
+    @include respond-to($mobile){
+      padding: 10px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 10px;
+
+      @include respond-to($mobile){
+        grid-template-columns: 1fr;
+      }
+  
+      
+      .product {
+        background-color: black;
+        color: white;
+        height: 300px;
+        position: relative;
+        border-radius: 10px;
+
+        a {
+          cursor: pointer;
+    
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            object-fit: cover;
+          }
+        }
+    
+        .details {
+          padding: 10px;
+          background-color: rgb(199, 199, 199);
+          color: black;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          border-radius: 0 0 10px 10px;
+
+          h2 {
+            margin: 0;
+          }
+    
+          .add-to-cart {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: large;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .about {
+    padding: 20px 80px;
+
+    @include respond-to($mobile){
+      padding: 10px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    padding: 20px 80px;
+
+    p {
+      font-size: small;
     }
   }
 }
